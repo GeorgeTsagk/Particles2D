@@ -48,10 +48,10 @@ public class Particle {
 				}
 				xvel /= 1.02;
 				yvel /= 1.02;
-				if(xvel > 15) xvel = 15;
-				if(xvel < -15) xvel = -15;
-				if(yvel > 15) yvel = 15;
-				if(yvel < -15) yvel = -15;
+				if(xvel > 35) xvel = 35;
+				if(xvel < -35) xvel = -35;
+				if(yvel > 35) yvel = 35;
+				if(yvel < -35) yvel = -35;
 				respectBounds();
 			}
 			
@@ -98,30 +98,29 @@ public class Particle {
 					y = a.y - interactor.height - judge.height/100;
 				}
 			}else if(judge.height == judge.width) {
-				x=-xvel/2;
-				y=-yvel/2;
-				if(interactor.x < a.getCenterX())
-					if(interactor.y < a.getCenterY()) {
-						x = a.x - judge.width/100 - 1;
-						y = a.y - judge.height/100 - 1;
+				double case1 = Math.abs(interactor.x - a.getCenterX());
+				double case2 = Math.abs(interactor.y - a.getCenterY());
+				if(case2 > case1) {
+					if(interactor.x > a.getCenterX()){
+						xvel = -xvel/2;
+						x = a.x + a.width + judge.width/100;
 					}
-					else if(interactor.y > a.getCenterY()) {
-						x = a.x - judge.width/100 - 1;
-						y = a.y + a.height + judge.height/100 + 1;
+					if(interactor.x < a.getCenterX()){
+						xvel = -xvel/2;
+						x = a.x - interactor.width - judge.width/100;
 					}
-				if(interactor.x > a.getCenterX())
-					if(interactor.y < a.getCenterY()) {
-						x = a.x + a.width + judge.width/100 + 1;
-						y = a.y - judge.height/100 - 1;
+				} else {
+					if(interactor.y > a.getCenterY()){
+						yvel = -yvel/2;
+						y = a.y + a.height + judge.height/100;
 					}
-					else if(interactor.y > a.getCenterY()) {
-						x = a.x + a.width + judge.width/100 + 1;
-						y = a.y + a.height + judge.height/100 + 1;
+					if(interactor.y < a.getCenterY()){
+						yvel = -yvel/2;
+						y = a.y - interactor.height - judge.height/100;
 					}
-				
+				}
 			}
 		}
-		g.drawRect(judge.x, judge.y, judge.width, judge.height);
 	}
 	
 	public int getX() {
