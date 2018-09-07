@@ -40,7 +40,6 @@ public class Drawer extends JPanel{
 	public void drawParticles(Graphics g) {
 		g.setColor(Color.CYAN);
 		for(Particle i : list) {
-			
 			g.setColor(i.getColor());
 			int x = i.getX();
 			int y = i.getY();
@@ -69,6 +68,8 @@ public class Drawer extends JPanel{
 		Map.add(new Rectangle(410,100,100,100));
 		Map.add(new Rectangle(10,100,100,100));
 		Map.add(new Rectangle(410,0,100,100));
+
+		Map.add(new Rectangle(410,10,100,100));
 		
 	}
 	

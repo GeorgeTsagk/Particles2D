@@ -82,20 +82,20 @@ public class Particle {
 			if(judge.height > judge.width) {
 				if(interactor.x > a.getCenterX()){
 					xvel = -xvel/2;
-					x = a.x + a.width + judge.width/100;
+					x+=2;
 				}
 				if(interactor.x < a.getCenterX()){
 					xvel = -xvel/2;
-					x = a.x - interactor.width - judge.width/100;
+					x -=2;
 				}
 			}else if(judge.height < judge.width){
 				if(interactor.y > a.getCenterY()){
 					yvel = -yvel/2;
-					y = a.y + a.height + judge.height/100;
+					y += 2;
 				}
 				if(interactor.y < a.getCenterY()){
 					yvel = -yvel/2;
-					y = a.y - interactor.height - judge.height/100;
+					y -= 2;
 				}
 			}else if(judge.height == judge.width) {
 				double case1 = Math.abs(interactor.x - a.getCenterX());
